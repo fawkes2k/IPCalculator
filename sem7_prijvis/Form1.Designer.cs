@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             Group_IPAddress = new GroupBox();
-            maskedTextBox1 = new MaskedTextBox();
+            Masked_IPAddress = new MaskedTextBox();
             Group_SubnetMask = new GroupBox();
             Combo_SubnetMask = new ComboBox();
             Group_Result = new GroupBox();
@@ -48,7 +48,7 @@
             // Group_IPAddress
             // 
             Group_IPAddress.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            Group_IPAddress.Controls.Add(maskedTextBox1);
+            Group_IPAddress.Controls.Add(Masked_IPAddress);
             Group_IPAddress.Location = new Point(12, 18);
             Group_IPAddress.Name = "Group_IPAddress";
             Group_IPAddress.Size = new Size(451, 67);
@@ -56,17 +56,19 @@
             Group_IPAddress.TabStop = false;
             Group_IPAddress.Text = "Adres IP / Sieci";
             // 
-            // maskedTextBox1
+            // Masked_IPAddress
             // 
-            maskedTextBox1.AsciiOnly = true;
-            maskedTextBox1.BeepOnError = true;
-            maskedTextBox1.Culture = new System.Globalization.CultureInfo("en-US");
-            maskedTextBox1.Location = new Point(3, 19);
-            maskedTextBox1.Mask = "000.000.0.0";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(438, 23);
-            maskedTextBox1.TabIndex = 0;
-            maskedTextBox1.Text = "19216800";
+            Masked_IPAddress.AsciiOnly = true;
+            Masked_IPAddress.BeepOnError = true;
+            Masked_IPAddress.Culture = new System.Globalization.CultureInfo("en-US");
+            Masked_IPAddress.CutCopyMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            Masked_IPAddress.Location = new Point(3, 19);
+            Masked_IPAddress.Mask = "990.990.990.990";
+            Masked_IPAddress.Name = "Masked_IPAddress";
+            Masked_IPAddress.RejectInputOnFirstFailure = true;
+            Masked_IPAddress.Size = new Size(438, 23);
+            Masked_IPAddress.TabIndex = 0;
+            Masked_IPAddress.Validated += Masked_IPAddress_Validated;
             // 
             // Group_SubnetMask
             // 
@@ -82,13 +84,14 @@
             // Combo_SubnetMask
             // 
             Combo_SubnetMask.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            Combo_SubnetMask.DropDownStyle = ComboBoxStyle.DropDownList;
             Combo_SubnetMask.FormattingEnabled = true;
             Combo_SubnetMask.Items.AddRange(new object[] { "255.255.255.255/32", "255.255.255.254/31", "255.255.255.252/30", "255.255.255.248/29", "255.255.255.240/28", "255.255.255.224/27", "255.255.255.192/26", "255.255.255.128/25", "255.255.255.0/24", "255.255.254.0/23", "255.255.252.0/22", "255.255.248.0/21", "255.255.240.0/20", "255.255.224.0/19", "255.255.192.0/18", "255.255.128.0/17", "255.255.0.0/16", "255.254.0.0/15", "255.252.0.0/14", "255.248.0.0/13", "255.240.0.0/12", "255.224.0.0/11", "255.192.0.0/10", "255.128.0.0/9", "255.0.0.0/8", "254.0.0.0/7", "252.0.0.0/6", "248.0.0.0/5", "240.0.0.0/4", "224.0.0.0/3", "192.0.0.0/2", "128.0.0.0/1" });
             Combo_SubnetMask.Location = new Point(6, 22);
             Combo_SubnetMask.Name = "Combo_SubnetMask";
             Combo_SubnetMask.Size = new Size(435, 23);
             Combo_SubnetMask.TabIndex = 0;
-            Combo_SubnetMask.Text = "255.255.255.0/24";
+            Combo_SubnetMask.SelectionChangeCommitted += Combo_SubnetMask_SelectionChangeCommitted;
             // 
             // Group_Result
             // 
@@ -201,6 +204,6 @@
         private Label Label_HostsInSubnet;
         private Label Label_MaximumHost;
         private Label Label_MinimumHost;
-        private MaskedTextBox maskedTextBox1;
+        private MaskedTextBox Masked_IPAddress;
     }
 }
