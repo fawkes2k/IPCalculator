@@ -28,176 +28,179 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            textBox1 = new TextBox();
-            groupBox2 = new GroupBox();
-            comboBox1 = new ComboBox();
-            groupBox3 = new GroupBox();
-            adresIP = new Label();
-            maska = new Label();
-            adresSieci = new Label();
-            adresRozgloszeniowy = new Label();
-            minimalnyHost = new Label();
-            maksymalnyHost = new Label();
-            liczbaHostow = new Label();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
+            Group_IPAddress = new GroupBox();
+            maskedTextBox1 = new MaskedTextBox();
+            Group_SubnetMask = new GroupBox();
+            Combo_SubnetMask = new ComboBox();
+            Group_Result = new GroupBox();
+            Label_HostsInSubnet = new Label();
+            Label_MaximumHost = new Label();
+            Label_MinimumHost = new Label();
+            Label_BroadcastAddress = new Label();
+            Label_SubnetAddress = new Label();
+            Label_SubnetMask = new Label();
+            Label_IPAddress = new Label();
+            Group_IPAddress.SuspendLayout();
+            Group_SubnetMask.SuspendLayout();
+            Group_Result.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox1
+            // Group_IPAddress
             // 
-            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Location = new Point(12, 18);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(451, 67);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Adres IP / Sieci";
+            Group_IPAddress.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            Group_IPAddress.Controls.Add(maskedTextBox1);
+            Group_IPAddress.Location = new Point(12, 18);
+            Group_IPAddress.Name = "Group_IPAddress";
+            Group_IPAddress.Size = new Size(451, 67);
+            Group_IPAddress.TabIndex = 0;
+            Group_IPAddress.TabStop = false;
+            Group_IPAddress.Text = "Adres IP / Sieci";
             // 
-            // textBox1
+            // maskedTextBox1
             // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Location = new Point(6, 22);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(435, 23);
-            textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
+            maskedTextBox1.AsciiOnly = true;
+            maskedTextBox1.BeepOnError = true;
+            maskedTextBox1.Culture = new System.Globalization.CultureInfo("en-US");
+            maskedTextBox1.Location = new Point(3, 19);
+            maskedTextBox1.Mask = "000.000.0.0";
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.Size = new Size(438, 23);
+            maskedTextBox1.TabIndex = 0;
+            maskedTextBox1.Text = "19216800";
             // 
-            // groupBox2
+            // Group_SubnetMask
             // 
-            groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            groupBox2.Controls.Add(comboBox1);
-            groupBox2.Location = new Point(12, 91);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(451, 67);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Maska adresu";
+            Group_SubnetMask.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            Group_SubnetMask.Controls.Add(Combo_SubnetMask);
+            Group_SubnetMask.Location = new Point(12, 91);
+            Group_SubnetMask.Name = "Group_SubnetMask";
+            Group_SubnetMask.Size = new Size(451, 67);
+            Group_SubnetMask.TabIndex = 1;
+            Group_SubnetMask.TabStop = false;
+            Group_SubnetMask.Text = "Maska adresu";
             // 
-            // comboBox1
+            // Combo_SubnetMask
             // 
-            comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(6, 22);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(435, 23);
-            comboBox1.TabIndex = 0;
+            Combo_SubnetMask.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            Combo_SubnetMask.FormattingEnabled = true;
+            Combo_SubnetMask.Items.AddRange(new object[] { "255.255.255.255/32", "255.255.255.254/31", "255.255.255.252/30", "255.255.255.248/29", "255.255.255.240/28", "255.255.255.224/27", "255.255.255.192/26", "255.255.255.128/25", "255.255.255.0/24", "255.255.254.0/23", "255.255.252.0/22", "255.255.248.0/21", "255.255.240.0/20", "255.255.224.0/19", "255.255.192.0/18", "255.255.128.0/17", "255.255.0.0/16", "255.254.0.0/15", "255.252.0.0/14", "255.248.0.0/13", "255.240.0.0/12", "255.224.0.0/11", "255.192.0.0/10", "255.128.0.0/9", "255.0.0.0/8", "254.0.0.0/7", "252.0.0.0/6", "248.0.0.0/5", "240.0.0.0/4", "224.0.0.0/3", "192.0.0.0/2", "128.0.0.0/1" });
+            Combo_SubnetMask.Location = new Point(6, 22);
+            Combo_SubnetMask.Name = "Combo_SubnetMask";
+            Combo_SubnetMask.Size = new Size(435, 23);
+            Combo_SubnetMask.TabIndex = 0;
+            Combo_SubnetMask.Text = "255.255.255.0/24";
             // 
-            // groupBox3
+            // Group_Result
             // 
-            groupBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            groupBox3.Controls.Add(liczbaHostow);
-            groupBox3.Controls.Add(maksymalnyHost);
-            groupBox3.Controls.Add(minimalnyHost);
-            groupBox3.Controls.Add(adresRozgloszeniowy);
-            groupBox3.Controls.Add(adresSieci);
-            groupBox3.Controls.Add(maska);
-            groupBox3.Controls.Add(adresIP);
-            groupBox3.Location = new Point(12, 164);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(451, 205);
-            groupBox3.TabIndex = 1;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Wynik";
+            Group_Result.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Group_Result.Controls.Add(Label_HostsInSubnet);
+            Group_Result.Controls.Add(Label_MaximumHost);
+            Group_Result.Controls.Add(Label_MinimumHost);
+            Group_Result.Controls.Add(Label_BroadcastAddress);
+            Group_Result.Controls.Add(Label_SubnetAddress);
+            Group_Result.Controls.Add(Label_SubnetMask);
+            Group_Result.Controls.Add(Label_IPAddress);
+            Group_Result.Location = new Point(12, 164);
+            Group_Result.Name = "Group_Result";
+            Group_Result.Size = new Size(451, 193);
+            Group_Result.TabIndex = 1;
+            Group_Result.TabStop = false;
+            Group_Result.Text = "Wynik";
             // 
-            // adresIP
+            // Label_HostsInSubnet
             // 
-            adresIP.AutoSize = true;
-            adresIP.Location = new Point(6, 19);
-            adresIP.Name = "adresIP";
-            adresIP.Size = new Size(360, 15);
-            adresIP.TabIndex = 0;
-            adresIP.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres IP";
+            Label_HostsInSubnet.AutoSize = true;
+            Label_HostsInSubnet.Location = new Point(6, 175);
+            Label_HostsInSubnet.Name = "Label_HostsInSubnet";
+            Label_HostsInSubnet.Size = new Size(161, 15);
+            Label_HostsInSubnet.TabIndex = 6;
+            Label_HostsInSubnet.Text = "Hostów w sieci: 2,147,483,648";
             // 
-            // maska
+            // Label_MaximumHost
             // 
-            maska.AutoSize = true;
-            maska.Location = new Point(6, 43);
-            maska.Name = "maska";
-            maska.Size = new Size(351, 15);
-            maska.TabIndex = 1;
-            maska.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Maska";
+            Label_MaximumHost.AutoSize = true;
+            Label_MaximumHost.Location = new Point(6, 149);
+            Label_MaximumHost.Name = "Label_MaximumHost";
+            Label_MaximumHost.Size = new Size(410, 15);
+            Label_MaximumHost.TabIndex = 5;
+            Label_MaximumHost.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Maksymalny host";
             // 
-            // adresSieci
+            // Label_MinimumHost
             // 
-            adresSieci.AutoSize = true;
-            adresSieci.Location = new Point(6, 71);
-            adresSieci.Name = "adresSieci";
-            adresSieci.Size = new Size(373, 15);
-            adresSieci.TabIndex = 2;
-            adresSieci.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres sieci";
+            Label_MinimumHost.AutoSize = true;
+            Label_MinimumHost.Location = new Point(6, 122);
+            Label_MinimumHost.Name = "Label_MinimumHost";
+            Label_MinimumHost.Size = new Size(400, 15);
+            Label_MinimumHost.TabIndex = 4;
+            Label_MinimumHost.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Minimalny host";
             // 
-            // adresRozgloszeniowy
+            // Label_BroadcastAddress
             // 
-            adresRozgloszeniowy.AutoSize = true;
-            adresRozgloszeniowy.Location = new Point(6, 96);
-            adresRozgloszeniowy.Name = "adresRozgloszeniowy";
-            adresRozgloszeniowy.Size = new Size(431, 15);
-            adresRozgloszeniowy.TabIndex = 3;
-            adresRozgloszeniowy.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres rozgłoszeniowy";
-            adresRozgloszeniowy.Click += label4_Click;
+            Label_BroadcastAddress.AutoSize = true;
+            Label_BroadcastAddress.Location = new Point(6, 96);
+            Label_BroadcastAddress.Name = "Label_BroadcastAddress";
+            Label_BroadcastAddress.Size = new Size(431, 15);
+            Label_BroadcastAddress.TabIndex = 3;
+            Label_BroadcastAddress.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres rozgłoszeniowy";
             // 
-            // minimalnyHost
+            // Label_SubnetAddress
             // 
-            minimalnyHost.AutoSize = true;
-            minimalnyHost.Location = new Point(6, 125);
-            minimalnyHost.Name = "minimalnyHost";
-            minimalnyHost.Size = new Size(400, 15);
-            minimalnyHost.TabIndex = 4;
-            minimalnyHost.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Minimalny host";
+            Label_SubnetAddress.AutoSize = true;
+            Label_SubnetAddress.Location = new Point(6, 70);
+            Label_SubnetAddress.Name = "Label_SubnetAddress";
+            Label_SubnetAddress.Size = new Size(373, 15);
+            Label_SubnetAddress.TabIndex = 2;
+            Label_SubnetAddress.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres sieci";
             // 
-            // maksymalnyHost
+            // Label_SubnetMask
             // 
-            maksymalnyHost.AutoSize = true;
-            maksymalnyHost.Location = new Point(6, 154);
-            maksymalnyHost.Name = "maksymalnyHost";
-            maksymalnyHost.Size = new Size(410, 15);
-            maksymalnyHost.TabIndex = 5;
-            maksymalnyHost.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Maksymalny host";
+            Label_SubnetMask.AutoSize = true;
+            Label_SubnetMask.Location = new Point(6, 44);
+            Label_SubnetMask.Name = "Label_SubnetMask";
+            Label_SubnetMask.Size = new Size(351, 15);
+            Label_SubnetMask.TabIndex = 1;
+            Label_SubnetMask.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Maska";
             // 
-            // liczbaHostow
+            // Label_IPAddress
             // 
-            liczbaHostow.AutoSize = true;
-            liczbaHostow.Location = new Point(6, 178);
-            liczbaHostow.Name = "liczbaHostow";
-            liczbaHostow.Size = new Size(110, 15);
-            liczbaHostow.TabIndex = 6;
-            liczbaHostow.Text = "Hostów w sieci: 510";
+            Label_IPAddress.AutoSize = true;
+            Label_IPAddress.Location = new Point(6, 19);
+            Label_IPAddress.Name = "Label_IPAddress";
+            Label_IPAddress.Size = new Size(360, 15);
+            Label_IPAddress.TabIndex = 0;
+            Label_IPAddress.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres IP";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(475, 381);
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            ClientSize = new Size(475, 377);
+            Controls.Add(Group_Result);
+            Controls.Add(Group_SubnetMask);
+            Controls.Add(Group_IPAddress);
             Name = "Form1";
             Text = "Kalkulator adresów IPv4";
-            Load += Form1_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
+            Group_IPAddress.ResumeLayout(false);
+            Group_IPAddress.PerformLayout();
+            Group_SubnetMask.ResumeLayout(false);
+            Group_Result.ResumeLayout(false);
+            Group_Result.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupBox1;
-        private TextBox textBox1;
-        private GroupBox groupBox2;
-        private ComboBox comboBox1;
-        private GroupBox groupBox3;
-        private Label adresRozgloszeniowy;
-        private Label adresSieci;
-        private Label maska;
-        private Label adresIP;
-        private Label liczbaHostow;
-        private Label maksymalnyHost;
-        private Label minimalnyHost;
+        private GroupBox Group_IPAddress;
+        private GroupBox Group_SubnetMask;
+        private ComboBox Combo_SubnetMask;
+        private GroupBox Group_Result;
+        private Label Label_BroadcastAddress;
+        private Label Label_SubnetAddress;
+        private Label Label_SubnetMask;
+        private Label Label_IPAddress;
+        private Label Label_HostsInSubnet;
+        private Label Label_MaximumHost;
+        private Label Label_MinimumHost;
+        private MaskedTextBox maskedTextBox1;
     }
 }
