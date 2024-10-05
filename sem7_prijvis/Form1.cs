@@ -16,5 +16,10 @@ namespace sem7_prijvis
         {
 
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
