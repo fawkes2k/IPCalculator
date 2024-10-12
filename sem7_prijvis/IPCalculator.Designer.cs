@@ -1,6 +1,8 @@
-﻿namespace sem7_prijvis
+﻿using System.Resources;
+
+namespace sem7_prijvis
 {
-    partial class Form1
+    partial class IPCalculator
     {
         /// <summary>
         ///  Required designer variable.
@@ -11,6 +13,10 @@
         ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// 
+
+        public ResourceManager rm = new ResourceManager(typeof(IPCalculator));
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -54,7 +60,7 @@
             Group_IPAddress.Size = new Size(451, 67);
             Group_IPAddress.TabIndex = 0;
             Group_IPAddress.TabStop = false;
-            Group_IPAddress.Text = "Adres IP / Sieci";
+            Group_IPAddress.Text = rm.GetString(Group_IPAddress.Name);
             // 
             // Masked_IPAddress
             // 
@@ -62,13 +68,13 @@
             Masked_IPAddress.BeepOnError = true;
             Masked_IPAddress.Culture = new System.Globalization.CultureInfo("en-US");
             Masked_IPAddress.CutCopyMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            Masked_IPAddress.Location = new Point(3, 19);
+            Masked_IPAddress.Location = new Point(6, 22);
             Masked_IPAddress.Name = "Masked_IPAddress";
             Masked_IPAddress.RejectInputOnFirstFailure = true;
             Masked_IPAddress.Size = new Size(438, 23);
             Masked_IPAddress.TabIndex = 0;
             Masked_IPAddress.Text = "192.168.0.0";
-            Masked_IPAddress.Leave += Masked_IPAddress_FocusLeave;
+            Masked_IPAddress.TextChanged += Updated;
             // 
             // Group_SubnetMask
             // 
@@ -79,7 +85,7 @@
             Group_SubnetMask.Size = new Size(451, 67);
             Group_SubnetMask.TabIndex = 1;
             Group_SubnetMask.TabStop = false;
-            Group_SubnetMask.Text = "Maska adresu";
+            Group_SubnetMask.Text = rm.GetString(Group_SubnetMask.Name);
             // 
             // Combo_SubnetMask
             // 
@@ -91,7 +97,8 @@
             Combo_SubnetMask.Name = "Combo_SubnetMask";
             Combo_SubnetMask.Size = new Size(435, 23);
             Combo_SubnetMask.TabIndex = 0;
-            Combo_SubnetMask.SelectionChangeCommitted += Combo_SubnetMask_SelectionChangeCommitted;
+            Combo_SubnetMask.Text = "255.255.255.0/24";
+            Combo_SubnetMask.SelectionChangeCommitted += Updated;
             // 
             // Group_Result
             // 
@@ -108,7 +115,7 @@
             Group_Result.Size = new Size(451, 193);
             Group_Result.TabIndex = 1;
             Group_Result.TabStop = false;
-            Group_Result.Text = "Wynik";
+            Group_Result.Text = rm.GetString(Group_Result.Name);
             // 
             // Label_HostsInSubnet
             // 
@@ -125,7 +132,6 @@
             Label_MaximumHost.Name = "Label_MaximumHost";
             Label_MaximumHost.Size = new Size(410, 15);
             Label_MaximumHost.TabIndex = 5;
-            Label_MaximumHost.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Maksymalny host";
             // 
             // Label_MinimumHost
             // 
@@ -134,7 +140,6 @@
             Label_MinimumHost.Name = "Label_MinimumHost";
             Label_MinimumHost.Size = new Size(400, 15);
             Label_MinimumHost.TabIndex = 4;
-            Label_MinimumHost.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Minimalny host";
             // 
             // Label_BroadcastAddress
             // 
@@ -143,7 +148,6 @@
             Label_BroadcastAddress.Name = "Label_BroadcastAddress";
             Label_BroadcastAddress.Size = new Size(431, 15);
             Label_BroadcastAddress.TabIndex = 3;
-            Label_BroadcastAddress.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres rozgłoszeniowy";
             // 
             // Label_SubnetAddress
             // 
@@ -152,7 +156,6 @@
             Label_SubnetAddress.Name = "Label_SubnetAddress";
             Label_SubnetAddress.Size = new Size(373, 15);
             Label_SubnetAddress.TabIndex = 2;
-            Label_SubnetAddress.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres sieci";
             // 
             // Label_SubnetMask
             // 
@@ -170,7 +173,7 @@
             Label_IPAddress.Size = new Size(0, 15);
             Label_IPAddress.TabIndex = 0;
             // 
-            // Form1
+            // IPCalculator
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -178,8 +181,8 @@
             Controls.Add(Group_Result);
             Controls.Add(Group_SubnetMask);
             Controls.Add(Group_IPAddress);
-            Name = "Form1";
-            Text = "Kalkulator adresów IPv4";
+            Name = "IPCalculator";
+            Text = rm.GetString("Window_Name");
             Group_IPAddress.ResumeLayout(false);
             Group_IPAddress.PerformLayout();
             Group_SubnetMask.ResumeLayout(false);
