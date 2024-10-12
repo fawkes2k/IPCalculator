@@ -33,13 +33,13 @@
             groupBox2 = new GroupBox();
             comboBox1 = new ComboBox();
             groupBox3 = new GroupBox();
-            adresIP = new Label();
-            maska = new Label();
-            adresSieci = new Label();
-            adresRozgloszeniowy = new Label();
-            minimalnyHost = new Label();
-            maksymalnyHost = new Label();
             liczbaHostow = new Label();
+            maksymalnyHost = new Label();
+            minimalnyHost = new Label();
+            adresRozgloszeniowy = new Label();
+            adresSieci = new Label();
+            maska = new Label();
+            adresIP = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -63,7 +63,8 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(435, 23);
             textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
+            textBox1.Text = "192.168.0.1";
+            textBox1.KeyUp += WalidacjaIP;
             // 
             // groupBox2
             // 
@@ -84,6 +85,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(435, 23);
             comboBox1.TabIndex = 0;
+            comboBox1.SelectedIndexChanged += zmienMaske;
             // 
             // groupBox3
             // 
@@ -102,51 +104,14 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Wynik";
             // 
-            // adresIP
+            // liczbaHostow
             // 
-            adresIP.AutoSize = true;
-            adresIP.Location = new Point(6, 19);
-            adresIP.Name = "adresIP";
-            adresIP.Size = new Size(360, 15);
-            adresIP.TabIndex = 0;
-            adresIP.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres IP";
-            // 
-            // maska
-            // 
-            maska.AutoSize = true;
-            maska.Location = new Point(6, 43);
-            maska.Name = "maska";
-            maska.Size = new Size(351, 15);
-            maska.TabIndex = 1;
-            maska.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Maska";
-            // 
-            // adresSieci
-            // 
-            adresSieci.AutoSize = true;
-            adresSieci.Location = new Point(6, 71);
-            adresSieci.Name = "adresSieci";
-            adresSieci.Size = new Size(373, 15);
-            adresSieci.TabIndex = 2;
-            adresSieci.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres sieci";
-            // 
-            // adresRozgloszeniowy
-            // 
-            adresRozgloszeniowy.AutoSize = true;
-            adresRozgloszeniowy.Location = new Point(6, 96);
-            adresRozgloszeniowy.Name = "adresRozgloszeniowy";
-            adresRozgloszeniowy.Size = new Size(431, 15);
-            adresRozgloszeniowy.TabIndex = 3;
-            adresRozgloszeniowy.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres rozgłoszeniowy";
-            adresRozgloszeniowy.Click += label4_Click;
-            // 
-            // minimalnyHost
-            // 
-            minimalnyHost.AutoSize = true;
-            minimalnyHost.Location = new Point(6, 125);
-            minimalnyHost.Name = "minimalnyHost";
-            minimalnyHost.Size = new Size(400, 15);
-            minimalnyHost.TabIndex = 4;
-            minimalnyHost.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Minimalny host";
+            liczbaHostow.AutoSize = true;
+            liczbaHostow.Location = new Point(6, 178);
+            liczbaHostow.Name = "liczbaHostow";
+            liczbaHostow.Size = new Size(110, 15);
+            liczbaHostow.TabIndex = 6;
+            liczbaHostow.Text = "Hostów w sieci: 510";
             // 
             // maksymalnyHost
             // 
@@ -157,14 +122,50 @@
             maksymalnyHost.TabIndex = 5;
             maksymalnyHost.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Maksymalny host";
             // 
-            // liczbaHostow
+            // minimalnyHost
             // 
-            liczbaHostow.AutoSize = true;
-            liczbaHostow.Location = new Point(6, 178);
-            liczbaHostow.Name = "liczbaHostow";
-            liczbaHostow.Size = new Size(110, 15);
-            liczbaHostow.TabIndex = 6;
-            liczbaHostow.Text = "Hostów w sieci: 510";
+            minimalnyHost.AutoSize = true;
+            minimalnyHost.Location = new Point(6, 125);
+            minimalnyHost.Name = "minimalnyHost";
+            minimalnyHost.Size = new Size(400, 15);
+            minimalnyHost.TabIndex = 4;
+            minimalnyHost.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Minimalny host";
+            // 
+            // adresRozgloszeniowy
+            // 
+            adresRozgloszeniowy.AutoSize = true;
+            adresRozgloszeniowy.Location = new Point(6, 96);
+            adresRozgloszeniowy.Name = "adresRozgloszeniowy";
+            adresRozgloszeniowy.Size = new Size(431, 15);
+            adresRozgloszeniowy.TabIndex = 3;
+            adresRozgloszeniowy.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres rozgłoszeniowy";
+            // 
+            // adresSieci
+            // 
+            adresSieci.AutoSize = true;
+            adresSieci.Location = new Point(6, 71);
+            adresSieci.Name = "adresSieci";
+            adresSieci.Size = new Size(373, 15);
+            adresSieci.TabIndex = 2;
+            adresSieci.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres sieci";
+            // 
+            // maska
+            // 
+            maska.AutoSize = true;
+            maska.Location = new Point(6, 43);
+            maska.Name = "maska";
+            maska.Size = new Size(351, 15);
+            maska.TabIndex = 1;
+            maska.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Maska";
+            // 
+            // adresIP
+            // 
+            adresIP.AutoSize = true;
+            adresIP.Location = new Point(6, 19);
+            adresIP.Name = "adresIP";
+            adresIP.Size = new Size(360, 15);
+            adresIP.TabIndex = 0;
+            adresIP.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres IP";
             // 
             // Form1
             // 
