@@ -63,12 +63,12 @@
             Masked_IPAddress.Culture = new System.Globalization.CultureInfo("en-US");
             Masked_IPAddress.CutCopyMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Masked_IPAddress.Location = new Point(3, 19);
-            Masked_IPAddress.Mask = "990.990.990.990";
             Masked_IPAddress.Name = "Masked_IPAddress";
             Masked_IPAddress.RejectInputOnFirstFailure = true;
             Masked_IPAddress.Size = new Size(438, 23);
             Masked_IPAddress.TabIndex = 0;
-            Masked_IPAddress.Validated += Masked_IPAddress_Validated;
+            Masked_IPAddress.Text = "192.168.0.0";
+            Masked_IPAddress.Leave += Masked_IPAddress_FocusLeave;
             // 
             // Group_SubnetMask
             // 
@@ -86,7 +86,7 @@
             Combo_SubnetMask.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             Combo_SubnetMask.DropDownStyle = ComboBoxStyle.DropDownList;
             Combo_SubnetMask.FormattingEnabled = true;
-            Combo_SubnetMask.Items.AddRange(new object[] { "255.255.255.255/32", "255.255.255.254/31", "255.255.255.252/30", "255.255.255.248/29", "255.255.255.240/28", "255.255.255.224/27", "255.255.255.192/26", "255.255.255.128/25", "255.255.255.0/24", "255.255.254.0/23", "255.255.252.0/22", "255.255.248.0/21", "255.255.240.0/20", "255.255.224.0/19", "255.255.192.0/18", "255.255.128.0/17", "255.255.0.0/16", "255.254.0.0/15", "255.252.0.0/14", "255.248.0.0/13", "255.240.0.0/12", "255.224.0.0/11", "255.192.0.0/10", "255.128.0.0/9", "255.0.0.0/8", "254.0.0.0/7", "252.0.0.0/6", "248.0.0.0/5", "240.0.0.0/4", "224.0.0.0/3", "192.0.0.0/2", "128.0.0.0/1" });
+            Combo_SubnetMask.Items.AddRange(new object[] { "255.255.255.255/32", "255.255.255.254/31", "255.255.255.252/30", "255.255.255.248/29", "255.255.255.240/28", "255.255.255.224/27", "255.255.255.192/26", "255.255.255.128/25", "255.255.255.0/24", "255.255.254.0/23", "255.255.252.0/22", "255.255.248.0/21", "255.255.240.0/20", "255.255.224.0/19", "255.255.192.0/18", "255.255.128.0/17", "255.255.0.0/16", "255.254.0.0/15", "255.252.0.0/14", "255.248.0.0/13", "255.240.0.0/12", "255.224.0.0/11", "255.192.0.0/10", "255.128.0.0/9", "255.0.0.0/8", "254.0.0.0/7", "252.0.0.0/6", "248.0.0.0/5", "240.0.0.0/4", "224.0.0.0/3", "192.0.0.0/2", "128.0.0.0/1", "0.0.0.0/0" });
             Combo_SubnetMask.Location = new Point(6, 22);
             Combo_SubnetMask.Name = "Combo_SubnetMask";
             Combo_SubnetMask.Size = new Size(435, 23);
@@ -115,9 +115,8 @@
             Label_HostsInSubnet.AutoSize = true;
             Label_HostsInSubnet.Location = new Point(6, 175);
             Label_HostsInSubnet.Name = "Label_HostsInSubnet";
-            Label_HostsInSubnet.Size = new Size(161, 15);
+            Label_HostsInSubnet.Size = new Size(0, 15);
             Label_HostsInSubnet.TabIndex = 6;
-            Label_HostsInSubnet.Text = "Hostów w sieci: 2,147,483,648";
             // 
             // Label_MaximumHost
             // 
@@ -160,18 +159,16 @@
             Label_SubnetMask.AutoSize = true;
             Label_SubnetMask.Location = new Point(6, 44);
             Label_SubnetMask.Name = "Label_SubnetMask";
-            Label_SubnetMask.Size = new Size(351, 15);
+            Label_SubnetMask.Size = new Size(0, 15);
             Label_SubnetMask.TabIndex = 1;
-            Label_SubnetMask.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Maska";
             // 
             // Label_IPAddress
             // 
             Label_IPAddress.AutoSize = true;
             Label_IPAddress.Location = new Point(6, 19);
             Label_IPAddress.Name = "Label_IPAddress";
-            Label_IPAddress.Size = new Size(360, 15);
+            Label_IPAddress.Size = new Size(0, 15);
             Label_IPAddress.TabIndex = 0;
-            Label_IPAddress.Text = " 11111111.11111111.11111111.11111111 - 255.255.255.255  - Adres IP";
             // 
             // Form1
             // 

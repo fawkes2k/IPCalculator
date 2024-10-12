@@ -7,6 +7,10 @@ namespace sem7_prijvis
         public Form1()
         {
             InitializeComponent();
+            Masked_IPAddress_FocusLeave(Masked_IPAddress, EventArgs.Empty);
+
+            Combo_SubnetMask.Text = "255.255.255.0/24";
+            Combo_SubnetMask_SelectionChangeCommitted(Combo_SubnetMask, EventArgs.Empty);
         }
 
         private static string IPAddressToText(IPAddress ip, string name)
@@ -16,31 +20,40 @@ namespace sem7_prijvis
             return string.Join(" - ", elements);
         }
 
-        private void Masked_IPAddress_Validated(object sender, EventArgs e)
+        private void Masked_IPAddress_FocusLeave(object sender, EventArgs e)
         {
-            MaskedTextBox maskedTextBox = (MaskedTextBox)sender;
-            bool parsed = IPAddress.TryParse(maskedTextBox.Text, out IPAddress? ip);
-            if (!parsed || ip == null)
+            if (sender is MaskedTextBox maskedTextBox)
             {
-                maskedTextBox.Text = "";
-                Label_IPAddress.Text = "";
-                return;
+                bool parsed = IPAddress.TryParse(maskedTextBox.Text, out IPAddress? ip);
+                if (!parsed || ip == null)
+                {
+                    Label_IPAddress.Text = "";
+                    return;
+                }
+                Label_IPAddress.Text = IPAddressToText(ip, "Adres IP");
             }
-            Label_IPAddress.Text = IPAddressToText(ip, "Adres IP");
         }
 
         private void Combo_SubnetMask_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            ComboBox comboBox = (ComboBox)sender;
-            string[] selected = comboBox.Text.Split('/');
-            bool parsed = IPAddress.TryParse(selected[0], out IPAddress? mask);
-            if (!parsed || mask == null)
+            if (sender is ComboBox comboBox)
             {
-                comboBox.Text = "";
-                Label_SubnetMask.Text = "";
-                return;
+                string[] selected = comboBox.Text.Split('/');
+                bool parsed = IPAddress.TryParse(selected[0], out IPAddress? mask);
+                if (!parsed || mask == null)
+                {
+                    Label_SubnetMask.Text = "";
+                    return;
+                }
+                Label_SubnetMask.Text = IPAddressToText(mask, "Maska");
+
+                parsed = byte.TryParse(selected[1], out byte int_mask);
+                if (parsed)
+                {
+                    ulong hosts = (ulong)Math.Pow(2, 32 - int_mask);
+                    Label_HostsInSubnet.Text = $"Hostów w sieci: {hosts}";
+                }
             }
-            Label_SubnetMask.Text = IPAddressToText(mask, "Maska");
         }
     }
 }
