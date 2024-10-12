@@ -43,7 +43,7 @@ namespace sem7_prijvis
             Label_MaximumHost = new Label();
             Label_MinimumHost = new Label();
             Label_BroadcastAddress = new Label();
-            Label_SubnetAddress = new Label();
+            Label_NetworkAddress = new Label();
             Label_SubnetMask = new Label();
             Label_IPAddress = new Label();
             Group_IPAddress.SuspendLayout();
@@ -107,7 +107,7 @@ namespace sem7_prijvis
             Group_Result.Controls.Add(Label_MaximumHost);
             Group_Result.Controls.Add(Label_MinimumHost);
             Group_Result.Controls.Add(Label_BroadcastAddress);
-            Group_Result.Controls.Add(Label_SubnetAddress);
+            Group_Result.Controls.Add(Label_NetworkAddress);
             Group_Result.Controls.Add(Label_SubnetMask);
             Group_Result.Controls.Add(Label_IPAddress);
             Group_Result.Location = new Point(12, 164);
@@ -149,13 +149,13 @@ namespace sem7_prijvis
             Label_BroadcastAddress.Size = new Size(431, 15);
             Label_BroadcastAddress.TabIndex = 3;
             // 
-            // Label_SubnetAddress
+            // Label_NetworkAddress
             // 
-            Label_SubnetAddress.AutoSize = true;
-            Label_SubnetAddress.Location = new Point(6, 70);
-            Label_SubnetAddress.Name = "Label_SubnetAddress";
-            Label_SubnetAddress.Size = new Size(373, 15);
-            Label_SubnetAddress.TabIndex = 2;
+            Label_NetworkAddress.AutoSize = true;
+            Label_NetworkAddress.Location = new Point(6, 70);
+            Label_NetworkAddress.Name = "Label_NetworkAddress";
+            Label_NetworkAddress.Size = new Size(373, 15);
+            Label_NetworkAddress.TabIndex = 2;
             // 
             // Label_SubnetMask
             // 
@@ -198,7 +198,7 @@ namespace sem7_prijvis
         private ComboBox Combo_SubnetMask;
         private GroupBox Group_Result;
         private Label Label_BroadcastAddress;
-        private Label Label_SubnetAddress;
+        private Label Label_NetworkAddress;
         private Label Label_SubnetMask;
         private Label Label_IPAddress;
         private Label Label_HostsInSubnet;

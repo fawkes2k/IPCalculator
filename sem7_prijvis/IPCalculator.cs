@@ -6,6 +6,7 @@ namespace sem7_prijvis
     {
         public IPCalculator()
         {
+            // System.Globalization.CultureInfo.CurrentUICulture = new System.Globalization.CultureInfo("pl_PL");
             InitializeComponent();
             Updated(this, EventArgs.Empty);
         }
@@ -14,7 +15,7 @@ namespace sem7_prijvis
         {
             Label_IPAddress.Text = string.Empty;
             Label_SubnetMask.Text = string.Empty;
-            Label_SubnetAddress.Text = string.Empty;
+            Label_NetworkAddress.Text = string.Empty;
             Label_BroadcastAddress.Text = string.Empty;
             Label_MinimumHost.Text = string.Empty;
             Label_MaximumHost.Text = string.Empty;
@@ -41,13 +42,19 @@ namespace sem7_prijvis
             parsed = byte.TryParse(selected[1], out byte int_mask);
             if (!parsed || int_mask > 32) { CleanAllLabels(); return; }
 
+            byte[] ip_address_bytes = ip_address.GetAddressBytes(), mask_address_bytes = mask_address.GetAddressBytes();
             IPAddressToText(ip_address, Label_IPAddress);
             IPAddressToText(mask_address, Label_SubnetMask);
+            
+            byte[] network_address = ip_address_bytes.AsParallel().Select((x, i) => (byte)(x & mask_address_bytes[i])).ToArray();
+            IPAddressToText(new IPAddress(network_address), Label_NetworkAddress);
+            network_address[3] += 1;
+            IPAddressToText(new IPAddress(network_address), Label_MinimumHost);
 
-            IPAddressToText(IPAddress.Broadcast, Label_SubnetAddress);
-            IPAddressToText(IPAddress.Broadcast, Label_BroadcastAddress);
-            IPAddressToText(IPAddress.Broadcast, Label_MinimumHost);
-            IPAddressToText(IPAddress.Broadcast, Label_MaximumHost);
+            byte[] broadcast_address = ip_address_bytes.AsParallel().Select((x, i) => (byte)(x | (mask_address_bytes[i] ^ 0xFF))).ToArray();
+            IPAddressToText(new IPAddress(broadcast_address), Label_BroadcastAddress);
+            broadcast_address[3] -= 1;
+            IPAddressToText(new IPAddress(broadcast_address), Label_MaximumHost);
 
             uint hosts = (uint)Math.Max(0, Math.Pow(2, 32 - int_mask) - 2);
             Label_HostsInSubnet.Text = $"{rm.GetString(Label_HostsInSubnet.Name)}: {hosts:N0}";

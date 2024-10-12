@@ -132,7 +132,7 @@
   <data name="Label_SubnetMask" xml:space="preserve">
     <value>Maska podsieci</value>
   </data>
-  <data name="Label_SubnetAddress" xml:space="preserve">
+  <data name="Label_NetworkAddress" xml:space="preserve">
     <value>Adres sieci</value>
   </data>
   <data name="Label_BroadcastAddress" xml:space="preserve">
