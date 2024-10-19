@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>IPCalculator.Program</StartupObject>
+    <SignAssembly>False</SignAssembly>
+    <Title>IPv4 Address Calculator</Title>
+    <Version>1.2.1</Version>
+    <Authors>Dominik Foks</Authors>
+    <Company>WSIZ</Company>
+    <Product>IPv4 Address Calculator</Product>
+    <Description>IPv4 Address Calculator</Description>
+    <Copyright>© 2024- Dominik Foks</Copyright>
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+    <NeutralLanguage>en</NeutralLanguage>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+</Project>

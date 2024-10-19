@@ -118,36 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Group_IPAddress" xml:space="preserve">
-    <value>IPアドレス</value>
+    <value>IP/Network address</value>
   </data>
   <data name="Group_SubnetMask" xml:space="preserve">
-    <value>サブネットマスク</value>
+    <value>Subnet mask</value>
   </data>
   <data name="Group_Result" xml:space="preserve">
-    <value>結果</value>
+    <value>Result</value>
   </data>
   <data name="Label_IPAddress" xml:space="preserve">
-    <value>IPアドレス</value>
+    <value>IP address</value>
   </data>
   <data name="Label_SubnetMask" xml:space="preserve">
-    <value>サブネットマスク</value>
+    <value>Subnet mask</value>
   </data>
   <data name="Label_BroadcastAddress" xml:space="preserve">
-    <value>ブロードキャストアドレス</value>
+    <value>Broadcast address</value>
   </data>
   <data name="Label_HostsInSubnet" xml:space="preserve">
-    <value>含まれるアドレス数</value>
+    <value>Hosts in subnet</value>
   </data>
   <data name="Label_MinimumHost" xml:space="preserve">
-    <value>開始アドレス </value>
+    <value>Minimum host</value>
   </data>
   <data name="Label_MaximumHost" xml:space="preserve">
-    <value>終了アドレス </value>
+    <value>Maximum host</value>
   </data>
   <data name="Window_Name" xml:space="preserve">
-    <value>IPv4アドレス電卓</value>
+    <value>IPv4 Address Calculator</value>
   </data>
   <data name="Label_NetworkAddress" xml:space="preserve">
-    <value>ネットワークアドレス</value>
+    <value>Network address</value>
+  </data>
+  <data name="Label_IPClass" xml:space="preserve">
+    <value>Address class</value>
   </data>
 </root>

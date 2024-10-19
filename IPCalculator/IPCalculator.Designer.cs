@@ -1,6 +1,6 @@
 ﻿using System.Resources;
 
-namespace sem7_prijvis
+namespace IPCalculator
 {
     partial class IPCalculator
     {
@@ -8,12 +8,6 @@ namespace sem7_prijvis
         ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        /// 
 
         public ResourceManager rm = new ResourceManager(typeof(IPCalculator));
 
@@ -46,6 +40,7 @@ namespace sem7_prijvis
             Label_NetworkAddress = new Label();
             Label_SubnetMask = new Label();
             Label_IPAddress = new Label();
+            Label_IPClass = new Label();
             Group_IPAddress.SuspendLayout();
             Group_SubnetMask.SuspendLayout();
             Group_Result.SuspendLayout();
@@ -73,7 +68,7 @@ namespace sem7_prijvis
             Masked_IPAddress.RejectInputOnFirstFailure = true;
             Masked_IPAddress.Size = new Size(438, 23);
             Masked_IPAddress.TabIndex = 0;
-            Masked_IPAddress.Text = "192.168.0.0";
+            Masked_IPAddress.Text = "192.168.1.1";
             Masked_IPAddress.TextChanged += Updated;
             // 
             // Group_SubnetMask
@@ -103,6 +98,7 @@ namespace sem7_prijvis
             // Group_Result
             // 
             Group_Result.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Group_Result.Controls.Add(Label_IPClass);
             Group_Result.Controls.Add(Label_HostsInSubnet);
             Group_Result.Controls.Add(Label_MaximumHost);
             Group_Result.Controls.Add(Label_MinimumHost);
@@ -130,7 +126,7 @@ namespace sem7_prijvis
             Label_MaximumHost.AutoSize = true;
             Label_MaximumHost.Location = new Point(6, 149);
             Label_MaximumHost.Name = "Label_MaximumHost";
-            Label_MaximumHost.Size = new Size(410, 15);
+            Label_MaximumHost.Size = new Size(0, 15);
             Label_MaximumHost.TabIndex = 5;
             // 
             // Label_MinimumHost
@@ -138,7 +134,7 @@ namespace sem7_prijvis
             Label_MinimumHost.AutoSize = true;
             Label_MinimumHost.Location = new Point(6, 122);
             Label_MinimumHost.Name = "Label_MinimumHost";
-            Label_MinimumHost.Size = new Size(400, 15);
+            Label_MinimumHost.Size = new Size(0, 15);
             Label_MinimumHost.TabIndex = 4;
             // 
             // Label_BroadcastAddress
@@ -146,7 +142,7 @@ namespace sem7_prijvis
             Label_BroadcastAddress.AutoSize = true;
             Label_BroadcastAddress.Location = new Point(6, 96);
             Label_BroadcastAddress.Name = "Label_BroadcastAddress";
-            Label_BroadcastAddress.Size = new Size(431, 15);
+            Label_BroadcastAddress.Size = new Size(0, 15);
             Label_BroadcastAddress.TabIndex = 3;
             // 
             // Label_NetworkAddress
@@ -154,7 +150,7 @@ namespace sem7_prijvis
             Label_NetworkAddress.AutoSize = true;
             Label_NetworkAddress.Location = new Point(6, 70);
             Label_NetworkAddress.Name = "Label_NetworkAddress";
-            Label_NetworkAddress.Size = new Size(373, 15);
+            Label_NetworkAddress.Size = new Size(0, 15);
             Label_NetworkAddress.TabIndex = 2;
             // 
             // Label_SubnetMask
@@ -172,6 +168,14 @@ namespace sem7_prijvis
             Label_IPAddress.Name = "Label_IPAddress";
             Label_IPAddress.Size = new Size(0, 15);
             Label_IPAddress.TabIndex = 0;
+            // 
+            // Label_IPClass
+            // 
+            Label_IPClass.AutoSize = true;
+            Label_IPClass.Location = new Point(222, 175);
+            Label_IPClass.Name = "Label_IPClass";
+            Label_IPClass.Size = new Size(0, 15);
+            Label_IPClass.TabIndex = 7;
             // 
             // IPCalculator
             // 
@@ -205,5 +209,6 @@ namespace sem7_prijvis
         private Label Label_MaximumHost;
         private Label Label_MinimumHost;
         private MaskedTextBox Masked_IPAddress;
+        private Label Label_IPClass;
     }
 }

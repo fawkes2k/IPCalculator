@@ -1,32 +1,25 @@
 using System.Net;
+using System.Text.RegularExpressions;
 
-namespace sem7_prijvis
+namespace IPCalculator
 {
     public partial class IPCalculator : Form
     {
         public IPCalculator()
         {
-            // System.Globalization.CultureInfo.CurrentUICulture = new System.Globalization.CultureInfo("pl_PL");
             InitializeComponent();
             Updated(this, EventArgs.Empty);
         }
 
         private void CleanAllLabels()
         {
-            Label_IPAddress.Text = string.Empty;
-            Label_SubnetMask.Text = string.Empty;
-            Label_NetworkAddress.Text = string.Empty;
-            Label_BroadcastAddress.Text = string.Empty;
-            Label_MinimumHost.Text = string.Empty;
-            Label_MaximumHost.Text = string.Empty;
-            Label_HostsInSubnet.Text = string.Empty;
+            Label_IPAddress.Text = Label_SubnetMask.Text = Label_NetworkAddress.Text = Label_BroadcastAddress.Text = Label_MinimumHost.Text = Label_MaximumHost.Text = Label_HostsInSubnet.Text = string.Empty;
         }
 
         private void IPAddressToText(IPAddress ip, Control target)
         {
-            var binary = ip.GetAddressBytes().Select(i => Convert.ToString(i, 2).PadLeft(8, '0'));
-            string? value_name = rm.GetString(target.Name);
-            string?[] elements = [string.Join('.', binary), ip.ToString(), value_name];
+            IEnumerable<string> binary = ip.GetAddressBytes().Select(i => Convert.ToString(i, 2).PadLeft(8, '0'));
+            string?[] elements = [string.Join('.', binary), ip.ToString(), rm.GetString(target.Name)];
             target.Text = string.Join(" - ", elements);
         }
 
@@ -58,6 +51,10 @@ namespace sem7_prijvis
 
             uint hosts = (uint)Math.Max(0, Math.Pow(2, 32 - int_mask) - 2);
             Label_HostsInSubnet.Text = $"{rm.GetString(Label_HostsInSubnet.Name)}: {hosts:N0}";
+
+            string first_byte_bin = Convert.ToString(ip_address_bytes[0] >> 3, 2).PadLeft(5, '0');
+            char IP_class = (char)(65 + Regex.Match(first_byte_bin, @"^(1+)(.+)").Groups[1].Length);
+            Label_IPClass.Text = $"{rm.GetString(Label_IPClass.Name)}: {IP_class}";
         }
     }
 }

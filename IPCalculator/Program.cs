@@ -1,4 +1,4 @@
-namespace sem7_prijvis
+namespace IPCalculator
 {
     internal static class Program
     {

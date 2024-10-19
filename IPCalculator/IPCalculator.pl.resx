@@ -118,36 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Group_IPAddress" xml:space="preserve">
-    <value>IP/Network address</value>
+    <value>Adres IP/sieci</value>
   </data>
   <data name="Group_SubnetMask" xml:space="preserve">
-    <value>Subnet mask</value>
+    <value>Maska podsieci</value>
   </data>
   <data name="Group_Result" xml:space="preserve">
-    <value>Result</value>
+    <value>Wynik</value>
   </data>
   <data name="Label_IPAddress" xml:space="preserve">
-    <value>IP address</value>
+    <value>Adres IP</value>
   </data>
   <data name="Label_SubnetMask" xml:space="preserve">
-    <value>Subnet mask</value>
+    <value>Maska podsieci</value>
   </data>
   <data name="Label_BroadcastAddress" xml:space="preserve">
-    <value>Broadcast address</value>
+    <value>Adres rozgloszeniowy</value>
   </data>
   <data name="Label_HostsInSubnet" xml:space="preserve">
-    <value>Hosts in subnet</value>
+    <value>Hostów w sieci</value>
   </data>
   <data name="Label_MinimumHost" xml:space="preserve">
-    <value>Minimum host</value>
+    <value>Minimalny host</value>
   </data>
   <data name="Label_MaximumHost" xml:space="preserve">
-    <value>Maximum host</value>
+    <value>Maksymalny host</value>
   </data>
   <data name="Window_Name" xml:space="preserve">
-    <value>IPv4 Address Calculator</value>
+    <value>Kalkulator adresów IPv4</value>
   </data>
   <data name="Label_NetworkAddress" xml:space="preserve">
-    <value>Network address</value>
+    <value>Adres sieci</value>
+  </data>
+  <data name="Label_IPClass" xml:space="preserve">
+    <value>Klasa adresowa</value>
   </data>
 </root>
