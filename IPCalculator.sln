@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sem7_prijvis", "sem7_prijvis\sem7_prijvis.csproj", "{42894B36-5CB2-4B6C-B515-5D1D96D8AB8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPCalculator", "IPCalculator\IPCalculator.csproj", "{42894B36-5CB2-4B6C-B515-5D1D96D8AB8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
