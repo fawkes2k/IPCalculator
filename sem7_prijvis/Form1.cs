@@ -7,6 +7,8 @@ namespace sem7_prijvis
     {
         public string IPString = "";
         public int Maska = 24;
+        public uint uMaska = 0; //
+        public uint uIP = 0;
 
         public Form1()
         {
@@ -16,6 +18,20 @@ namespace sem7_prijvis
         public string uint2ip(uint address)
         {
             return new IPAddress(BitConverter.GetBytes(address).Reverse().ToArray()).ToString();
+        }
+
+        public string ipString(uint address, string opis) { 
+        
+            string sip = uint2ip(address);
+            var bc = BitConverter.GetBytes(address).Reverse().ToArray();
+            string ip2 = "";
+            foreach (byte b in bc) { 
+                if(ip2!="") ip2 += ".";
+                ip2 += Convert.ToString(b,2).PadLeft(8,'0');
+            }
+            
+            return $"{ip2} {sip} - {opis}";
+
         }
 
         private void genMaki()
@@ -46,9 +62,20 @@ namespace sem7_prijvis
                 // 255.255.255.255
                 string reg = @"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
                 var test = new Regex(reg);
+                
                 if (test.IsMatch(tb.Text))
                 {
                     IPString = tb.Text;
+                    string reg1 = @"^(\d+)\.(\d+)\.(\d+)\.(\d+)$";
+                    Match match = Regex.Match(IPString, reg1);
+                    for (int i = 1; i < 5; i++)
+                    {
+                        uIP <<= 8;
+                        uIP += uint.Parse(match.Groups[i].Value);
+                    }
+
+
+
                     licz();
                 }
                 else IPString = "";
@@ -60,17 +87,46 @@ namespace sem7_prijvis
             return (uint)Math.Pow(2, 32-Maska)-2;
         }
 
+        public string adresSieciLicz()
+        {
+            uint adresS = uIP & uMaska;
+            return uint2ip(adresS);
+        }
+
         public void licz()
         {
             if (IPString == "") return;
 
+            /**
+            0 - klasa A
+            10 - Klasa B
+            110 - klasaC
+            1110 - klasa D
+            11110 - klasa E
+             
+            */ 
+
+
+            uint rozgAdres = (uIP & uMaska) + (uint.MaxValue & ~uMaska);
+            uint siecadres = (uIP & uMaska);
+            uint ip = uIP;
+            if(ip==rozgAdres || ip ==siecadres) ip = siecadres+1;
+
+
+            maska.Text = ipString(uMaska, "Maska");
+            adresIP.Text = ipString(ip, "Adres IP");
+            adresRozgloszeniowy.Text = ipString(rozgAdres, "Adres rozg³oszeniowy");
+            adresSieci.Text = ipString(siecadres, "Adres sieci");
             liczbaHostow.Text = "Hostów w sieci: " + ileHostow();
+            minimalnyHost.Text = ipString(siecadres + 1, "Adres minimalny hosta");
+            maksymalnyHost.Text = ipString(rozgAdres-1, "Adres maksymalny hosta");
         }
 
         private void zmienMaske(object sender, EventArgs e)
         {
             if (sender is ComboBox cmb) {
                 Maska = cmb.SelectedIndex;
+                uMaska = uint.MaxValue << (32 - Maska); // 255.255.255.0
                 licz();
             }
         }
